@@ -1,0 +1,13 @@
+package net.meme;
+
+import java.awt.event.KeyEvent;
+
+public class Input {
+	
+	public boolean keys[] = new boolean[KeyEvent.KEY_LAST+1];
+	
+	public Input(){
+		
+	}
+
+}

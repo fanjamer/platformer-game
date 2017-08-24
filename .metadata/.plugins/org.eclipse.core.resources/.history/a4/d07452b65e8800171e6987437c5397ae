@@ -1,0 +1,17 @@
+package net.meme;
+
+import java.awt.Graphics;
+
+public class Game {
+	
+	public Input input = new Input();
+	
+	public void tick(){
+		if(input.keys[KeyEvent.VK_SPACE]) System.out.println("oof");
+	}
+	
+	public void render(Graphics g){
+		
+	}
+
+}

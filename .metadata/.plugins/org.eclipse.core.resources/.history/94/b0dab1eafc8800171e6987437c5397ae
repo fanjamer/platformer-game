@@ -1,0 +1,19 @@
+package net.meme;
+
+import java.awt.Graphics;
+
+public class Player {
+	
+	public float x = 0, y = 0;
+	public boolean cameraMoving = false;
+	
+	public void tick(Game game){
+		if(x < 100) cameraMoving = false;
+		else cameraMoving = true;
+	}
+	
+	public void render(Graphics g){
+		
+	}
+
+}

@@ -1,0 +1,11 @@
+package net.meme.resource;
+
+import java.awt.image.BufferedImage;
+
+public class Art {
+
+	public static BufferedImage load(String path){
+		InputStream stream = Art.class.getClass().getResourceAsStream(path);
+	}
+	
+}

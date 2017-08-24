@@ -20,7 +20,8 @@ public class Display extends JPanel implements Runnable {
 	public JFrame frame;
 			
 	private Thread thread;
-			
+	public Game game;		
+	
 	private boolean running = false;
 	
 	public int fps;
@@ -32,6 +33,8 @@ public class Display extends JPanel implements Runnable {
 	}
 	
 	private void init(){
+		game = new Game();
+		
 		Dimension size = new Dimension(width, height);
 		this.setPreferredSize(size);
 		this.setMaximumSize(size);
@@ -39,6 +42,7 @@ public class Display extends JPanel implements Runnable {
 		
 		frame = new JFrame(title);
 		frame.add(this);
+		frame.addKeyListener(game.input);
 		frame.setResizable(false);
 		frame.setSize(size);
 		frame.setLocationRelativeTo(null);
@@ -117,12 +121,12 @@ public class Display extends JPanel implements Runnable {
 	}
 	
 	private void tick(){
-		
+		game.tick();
 	}
 	
 	private void render(Graphics g){
-		g.setColor(Color.red);
 		g.fillRect(0, 0, (int)(width*scale), (int)(height*scale));
+		game.render(g);
 	}
 	
 	public void paint(Graphics g){
