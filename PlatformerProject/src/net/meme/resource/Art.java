@@ -7,6 +7,8 @@ import java.io.InputStream;
 import javax.imageio.ImageIO;
 
 public class Art {
+	
+	public static final BufferedImage grass = load("/block/grass.png");
 
 	public static BufferedImage load(String path){
 		InputStream stream = Art.class.getClass().getResourceAsStream(path);
