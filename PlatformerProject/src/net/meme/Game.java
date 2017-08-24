@@ -20,6 +20,7 @@ public class Game {
 	public void tick(){
 		input.tick();
 		player.tick(this);
+		for(int i = 0; i < testblocks.length; i++) testblocks[i].tick(this);
 	}
 	
 	public void render(Graphics g){

@@ -1,0 +1,13 @@
+package net.meme.block;
+
+import net.meme.Game;
+
+public class GrassBlock extends Block {
+
+	@Override
+	public void tick(Game game) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
