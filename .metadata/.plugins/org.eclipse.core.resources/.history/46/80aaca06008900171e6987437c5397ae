@@ -2,8 +2,6 @@ package net.meme;
 
 import java.awt.Graphics;
 
-import net.meme.player.Player;
-
 public class Game {
 	
 	public Input input = new Input();

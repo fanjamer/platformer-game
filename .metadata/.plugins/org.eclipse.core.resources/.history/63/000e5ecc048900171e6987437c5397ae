@@ -1,0 +1,14 @@
+package net.meme.tile;
+
+import java.awt.image.BufferedImage;
+
+public class Tile {
+	
+	public int x, y;
+	public BufferedImage tex;
+	
+	public Tile(int x, int y, BufferedImage tex){
+		
+	}
+
+}
