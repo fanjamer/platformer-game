@@ -6,8 +6,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import net.meme.Game;
-import net.meme.block.Block;
-import net.meme.block.GrassBlock;
+import net.meme.block.*;
 
 public class Map {
 	
@@ -28,6 +27,7 @@ public class Map {
 				Color col = new Color(mapImg.getRGB(x, y));
 				
 				if(col.equals(new Color(0, 255, 0))) row.add(new GrassBlock(x, mapY));
+				else if(col.equals(new Color(148, 82, 0))) row.add(new DirtBlock(x, mapY));
 				else if(col.equals(new Color(255, 255, 255))){
 					game.player.y = y*32;
 					game.player.x = x*32;
@@ -56,6 +56,14 @@ public class Map {
 				if(row.get(y) != null) row.get(y).render(game, g);
 			}
 		}
+	}
+	
+	public int getWidth(){
+		return blocks.get(0).size();
+	}
+	
+	public int getHeight(){
+		return blocks.size();
 	}
 
 }

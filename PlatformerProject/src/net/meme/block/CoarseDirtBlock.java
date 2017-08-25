@@ -10,6 +10,12 @@ public class CoarseDirtBlock extends Block {
 	}
 
 	public void onTouch(Game game) {}
-	public void onExplode(Game game) {}
+	
+	public void onExplode(Game game) {
+		int mapX = (int) (x/32);
+		int mapY = (int) (y/32);
+		
+		game.map.blocks.get(mapX).set(mapY, null);
+	}
 
 }
