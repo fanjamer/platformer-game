@@ -11,7 +11,7 @@ public class Game {
 	
 	public Input input = new Input();
 	public Player player = new Player();
-	private Map map;
+	public Map map;
 	
 	public Game(){
 		map = new Map(Art.load("/map/test.png"), null, this);
@@ -25,7 +25,7 @@ public class Game {
 	
 	public void render(Graphics g){
 		map.render(this, g);
-		player.render(g);
+		player.render(this, g);
 	}
 
 }
