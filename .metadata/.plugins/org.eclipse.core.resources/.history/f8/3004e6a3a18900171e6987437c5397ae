@@ -13,8 +13,7 @@ public class Game {
 	
 	public Game(){
 		for(int i = 0; i < testblocks.length; i++){
-			if(i < 30) testblocks[i] = new GrassBlock(i%30, 0);
-			else testblocks[i] = new GrassBlock(i%30, 10);
+			testblocks[i] = new GrassBlock(i%60, i/10);
 		}
 	}
 	

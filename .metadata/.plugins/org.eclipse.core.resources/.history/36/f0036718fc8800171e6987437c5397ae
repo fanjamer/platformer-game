@@ -1,7 +1,0 @@
-package net.meme;
-
-public class Player {
-	
-	public float x = 0, y = 0;
-
-}

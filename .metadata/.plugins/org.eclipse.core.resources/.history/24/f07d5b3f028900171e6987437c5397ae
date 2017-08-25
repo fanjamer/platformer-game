@@ -1,9 +1,0 @@
-package net.meme.tile;
-
-public class Tile {
-	
-	public int x, y;
-	
-	public Tile(int x, int y, BufferedImage img)
-
-}

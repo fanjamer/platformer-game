@@ -8,7 +8,6 @@ import java.awt.image.BufferedImage;
 
 import net.meme.Display;
 import net.meme.Game;
-import net.meme.player.Player;
 
 public abstract class Block {
 	
@@ -31,20 +30,14 @@ public abstract class Block {
 		else hitbox = new Rectangle((int)(x), (int)(dy), (int)(32*Display.scale), (int)(32*Display.scale));
 		//hitbox = new Rectangle((int)x, (int)y, 32, 32);
 		
-		if((game.player.y+64 <= dy+Player.maxGrav*2 && game.player.y+64 >= dy-Player.maxGrav*2) && hitbox.intersects(game.player.hitbox)){ // player is on top of block
+		// simple check if player is on top of block
+		if((game.player.y+64 <= dy+11f && game.player.y+64 >= dy-11f) && hitbox.intersects(game.player.hitbox)){
 			// dont fall, player can jump now
 			game.player.falling = false;
 			game.player.canJump = true;
 			
 			// if player is in block correct his position
 			if(game.player.y+64>dy) game.player.y = dy-64;
-		}else if(game.player.x+64 <= x+Player.spd*2 && hitbox.intersects(game.player.hitbox)){ // player moves right and collides
-			game.player.x-=Player.spd;
-		}else if(game.player.x >= x-Player.spd*2 && hitbox.intersects(game.player.hitbox)){ // player moves left and collides
-			game.player.x+=Player.spd;
-		}else if(game.player.y >= dy+Player.maxGrav*2 && hitbox.intersects(game.player.hitbox)){ // player hits bottom of block
-			if(game.player.y < dy+32) game.player.y = dy+32;
-			game.player.jumping = false;
 		}
 	}
 	
@@ -52,6 +45,9 @@ public abstract class Block {
 		float dy = 18.75f*32-y-32;
 		if(game.player.cameraMoving) g.drawImage(tex, (int)(Display.scale*(x-game.player.x+11.5*32)), (int)(Display.scale*(dy)), (int)(32*Display.scale), (int)(32*Display.scale), null);
 		else g.drawImage(tex, (int)(Display.scale*x), (int)(Display.scale*(dy)), (int)(32*Display.scale), (int)(32*Display.scale), null);
+		Graphics2D g2d = (Graphics2D)g;
+		g2d.setColor(Color.white);
+		g2d.draw(hitbox);
 	}
 	
 	public abstract void onTouch(Game game);

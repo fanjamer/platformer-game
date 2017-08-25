@@ -16,7 +16,7 @@ public class Player {
 	public static final float startGrav = 1f;
 	public static final float spd = 2f;
 	
-	public float x = 0, y = 400;
+	public float x = 0, y = 567;
 	private float curGrav = startGrav;
 	public boolean cameraMoving = false;
 	public boolean falling = true;

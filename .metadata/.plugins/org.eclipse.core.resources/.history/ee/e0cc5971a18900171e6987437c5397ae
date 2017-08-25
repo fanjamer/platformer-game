@@ -9,12 +9,11 @@ public class Game {
 	
 	public Input input = new Input();
 	public Player player = new Player();
-	private GrassBlock testblocks[] = new GrassBlock[60];
+	private GrassBlock testblocks[] = new GrassBlock[20];
 	
 	public Game(){
 		for(int i = 0; i < testblocks.length; i++){
-			if(i < 30) testblocks[i] = new GrassBlock(i%30, 0);
-			else testblocks[i] = new GrassBlock(i%30, 10);
+			testblocks[i] = new GrassBlock(i%5, i/10);
 		}
 	}
 	
