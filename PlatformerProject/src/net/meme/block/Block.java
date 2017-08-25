@@ -44,6 +44,7 @@ public abstract class Block {
 		}else if(game.player.y >= dy+Player.maxGrav*2 && hitbox.intersects(game.player.hitbox)){ // player hits bottom of block
 			if(game.player.y < dy+32) game.player.y = dy+32;
 			game.player.jumping = false;
+			game.player.curGrav = Player.startGrav;
 		}
 	}
 	

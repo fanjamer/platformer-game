@@ -1,9 +1,0 @@
-package net.meme.resource;
-
-public class Art {
-
-	public static BufferedImage load(String path){
-		
-	}
-	
-}

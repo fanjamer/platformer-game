@@ -17,7 +17,7 @@ public class Player {
 	public static final float spd = 2f;
 	
 	public float x = 0, y = 400;
-	private float curGrav = startGrav;
+	public float curGrav = startGrav;
 	public boolean cameraMoving = false;
 	public boolean falling = true;
 	public Rectangle hitbox;
