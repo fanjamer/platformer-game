@@ -21,12 +21,15 @@ public abstract class Block {
 	
 	public void tick(Game game){
 		float dy = 18.75f*32-y-32;
-		if(game.player.cameraMoving) hitbox = new Rectangle((int)(x-game.player.x+11.5*32), (int)(dy-game.player.y), (int)(32), (int)(32));
-		else hitbox = new Rectangle((int)(x), (int)(dy-game.player.y), (int)(32*Display.scale), (int)(32*Display.scale));
+		/*if(game.player.cameraMoving) hitbox = new Rectangle((int)(x-game.player.x+11.5*32), (int)(dy-game.player.y), (int)(32), (int)(32));
+		else hitbox = new Rectangle((int)(x), (int)(dy-game.player.y), (int)(32*Display.scale), (int)(32*Display.scale));*/
+		hitbox = new Rectangle((int)x, (int)y, 32, 32);
 		
-		if(hitbox.intersects(game.player.hitbox)){
+		// top of block
+		if(game.player.y >= this.y && hitbox.intersects(game.player.hitbox)){
 			game.player.falling = false;
-			System.out.println("oof");
+			game.player.canJump = true;
+			game.player.y = y;
 		}
 	}
 	
