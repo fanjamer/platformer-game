@@ -3,29 +3,28 @@ package net.meme;
 import java.awt.Graphics;
 
 import net.meme.block.GrassBlock;
+import net.meme.block.map.Map;
 import net.meme.player.Player;
+import net.meme.resource.Art;
 
 public class Game {
 	
 	public Input input = new Input();
 	public Player player = new Player();
-	private GrassBlock testblocks[] = new GrassBlock[60];
+	private Map map;
 	
 	public Game(){
-		for(int i = 0; i < testblocks.length; i++){
-			if(i < 30) testblocks[i] = new GrassBlock(i%30, 0);
-			else testblocks[i] = new GrassBlock(i%30, 10);
-		}
+		map = new Map(Art.load("/map/test.png"), null, this);
 	}
 	
 	public void tick(){
 		input.tick();
 		player.tick(this);
-		for(int i = 0; i < testblocks.length; i++) testblocks[i].tick(this);
+		map.tick(this);
 	}
 	
 	public void render(Graphics g){
-		for(int i = 0; i < testblocks.length; i++) testblocks[i].render(this, g);
+		map.render(this, g);
 		player.render(g);
 	}
 

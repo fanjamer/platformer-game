@@ -29,7 +29,6 @@ public abstract class Block {
 		// set hitbox
 		if(game.player.cameraMoving) hitbox = new Rectangle((int)(x-game.player.x+11.5*32), (int)(dy), (int)(32), (int)(32));
 		else hitbox = new Rectangle((int)(x), (int)(dy), (int)(32*Display.scale), (int)(32*Display.scale));
-		//hitbox = new Rectangle((int)x, (int)y, 32, 32);
 		
 		if((game.player.y+64 <= dy+Player.maxGrav*2 && game.player.y+64 >= dy-Player.maxGrav*2) && hitbox.intersects(game.player.hitbox)){ // player is on top of block
 			// dont fall, player can jump now
@@ -55,5 +54,6 @@ public abstract class Block {
 	}
 	
 	public abstract void onTouch(Game game);
+	public abstract void onExplode(Game game);
 
 }

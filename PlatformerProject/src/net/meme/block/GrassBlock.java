@@ -9,7 +9,7 @@ public class GrassBlock extends Block {
 		super(x, y, Art.grass);
 	}
 
-	@Override
 	public void onTouch(Game game) {}
+	public void onExplode(Game game) {}
 
 }

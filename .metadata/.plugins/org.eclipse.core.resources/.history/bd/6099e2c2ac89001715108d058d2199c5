@@ -1,0 +1,64 @@
+package net.meme.block.map;
+
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+
+import net.meme.Game;
+import net.meme.block.Block;
+import net.meme.block.GrassBlock;
+
+public class Map {
+	
+	public BufferedImage background;
+	public ArrayList<ArrayList<Block>> blocks = new ArrayList<ArrayList<Block>>();
+	
+	// mapImg is the image that the tiles will come from
+	public Map(BufferedImage mapImg, BufferedImage background, Game game){
+		this.background = background;
+		createMap(mapImg, game);
+	}
+		
+	private void createMap(BufferedImage mapImg, Game game){
+		for(int y = 0; y < mapImg.getHeight(); y++){
+			int mapY = mapImg.getHeight()-y-1;
+			ArrayList<Block> row = new ArrayList<Block>();
+			for(int x = 0; x < mapImg.getWidth(); x++){
+				int col = mapImg.getRGB(x, y);
+				
+				switch(col){
+				case 0x00ff00:
+					row.add(new GrassBlock(x, mapY));
+					break;
+				case 0xffffff:
+					game.player.y = y*32;
+					game.player.x = x*32;
+					row.add(null);
+					break;
+				default:
+					row.add(new GrassBlock(x, mapY));
+					break;
+				}
+			}
+		}
+	}
+	
+	public void tick(Game game){
+		for(int x = 0; x < blocks.size(); x++){
+			ArrayList<Block> row = blocks.get(x);
+			for(int y = 0; y < row.size(); y++){
+				row.get(y).tick(game);
+			}
+		}
+	}
+	
+	public void render(Game game, Graphics g){
+		for(int x = 0; x < blocks.size(); x++){
+			ArrayList<Block> row = blocks.get(x);
+			for(int y = 0; y < row.size(); y++){
+				row.get(y).render(game, g);
+			}
+		}
+	}
+
+}
