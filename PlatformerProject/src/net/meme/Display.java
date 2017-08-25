@@ -95,11 +95,11 @@ public class Display extends JPanel implements Runnable {
 				shouldRender = true;
 			}
 			
-			try {
-				Thread.sleep(2);
+			/*try {
+				Thread.sleep(1);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
-			}
+			}*/
 			
 			if(shouldRender){
 				frames++;

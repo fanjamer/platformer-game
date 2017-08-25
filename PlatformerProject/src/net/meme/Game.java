@@ -13,7 +13,7 @@ public class Game {
 	
 	public Game(){
 		for(int i = 0; i < testblocks.length; i++){
-			testblocks[i] = new GrassBlock(i, 0);
+			testblocks[i] = new GrassBlock(i%5, i/10);
 		}
 	}
 	
