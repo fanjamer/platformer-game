@@ -28,7 +28,7 @@ public abstract class Block {
 		
 		// set hitbox
 		if(game.player.cameraMoving) hitbox = new Rectangle((int)(x-game.player.x+11.5*32), (int)(dy), (int)(32), (int)(32));
-		else hitbox = new Rectangle((int)(x), (int)(dy), (int)(32*Display.scale), (int)(32*Display.scale));
+		else hitbox = new Rectangle((int)(x-game.player.offset), (int)(dy), (int)(32*Display.scale), (int)(32*Display.scale));
 		
 		if((game.player.y+64 <= dy+Player.maxGrav*2 && game.player.y+64 >= dy-Player.maxGrav*2) && hitbox.intersects(game.player.hitbox)){ // player is on top of block
 			// dont fall, player can jump now
@@ -50,8 +50,10 @@ public abstract class Block {
 	
 	public void render(Game game, Graphics g){
 		float dy = 18.75f*32-y-32;
-		if(game.player.cameraMoving) g.drawImage(tex, (int)(Display.scale*(x-game.player.x+11.5*32)), (int)(Display.scale*(dy)), (int)(32*Display.scale), (int)(32*Display.scale), null);
-		else g.drawImage(tex, (int)(Display.scale*x), (int)(Display.scale*(dy)), (int)(32*Display.scale), (int)(32*Display.scale), null);
+		if(game.player.cameraMoving){
+			g.drawImage(tex, (int)(Display.scale*(x-game.player.x+11.5*32)), (int)(Display.scale*(dy)), (int)(32*Display.scale), (int)(32*Display.scale), null);
+		}
+		else g.drawImage(tex, (int)(Display.scale*(x-game.player.offset)), (int)(Display.scale*(dy)), (int)(32*Display.scale), (int)(32*Display.scale), null);
 	}
 	
 	public abstract void onTouch(Game game);

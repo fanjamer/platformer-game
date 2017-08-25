@@ -17,6 +17,7 @@ public class Player {
 	public static final float spd = 2f;
 	
 	public float x = 0, y = 0;
+	public float offset = 0;
 	public float curGrav = startGrav;
 	public boolean cameraMoving = false;
 	public boolean falling = true;
@@ -40,12 +41,14 @@ public class Player {
 		if(x < 0) x = 0;
 		else if(x+64 > 32*game.map.getWidth()) x = 32*game.map.getWidth()-64;
 		
-		float edge = (float) (32*game.map.getWidth());
 		if(x < 11.5*32){
 			hitbox = new Rectangle((int)x, (int)(Math.round(y)), 64, 64);
 			cameraMoving = false;
-		}else if(x > 32*game.map.getWidth()/2){
-			int dx = (int) (800-(edge-x));
+			offset = 0;
+		}else if(x > 32*game.map.getWidth()-13.5*32){
+			if(cameraMoving == true) offset = game.map.getWidth()*32-11.5f*32-432;
+			float edge = (float) (32*game.map.getWidth());
+			int dx = (int) (Display.width-(edge-x));
 			hitbox = new Rectangle(dx, (int)Math.round(y), 64, 64);
 			cameraMoving = false;
 		}else{
@@ -69,7 +72,7 @@ public class Player {
 		if(cameraMoving) g.fillRect((int)(368*Display.scale), (int)((y)*Display.scale), (int)(64*Display.scale), (int)(64*Display.scale));
 		else{
 			float edge = (float) (32*game.map.getWidth());
-			int dx = (int) (800-(edge-x));
+			int dx = (int) (Display.width-(edge-x));
 			if(x < 11.5*32) g.fillRect((int)(x*Display.scale), (int)((y)*Display.scale), (int)(64*Display.scale), (int)(64*Display.scale)); 
 			else{ 
 				g.fillRect((int) (dx*Display.scale), (int)(Math.round(y)*Display.scale), (int)(64*Display.scale), (int)(64*Display.scale));
