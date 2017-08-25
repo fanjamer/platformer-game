@@ -35,6 +35,7 @@ public class Player {
 		}
 				
 		if(falling) gravity();
+		else canJump = true;
 		else{
 			canJump = true;
 			curGrav = 0.3f;

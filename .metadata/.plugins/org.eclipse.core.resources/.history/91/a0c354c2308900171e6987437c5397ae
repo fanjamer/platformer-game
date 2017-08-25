@@ -24,13 +24,15 @@ public class Player {
 		
 		if(x < 0) x = 0;
 		
+		hitbox = new Rectangle((int)x, (int)y, 64, 64);
+		
 		if(x < 11.5*32){
-			hitbox = new Rectangle((int)x, (int)(600-64-32), 64, 64);
+			//hitbox = new Rectangle((int)x, (int)y, 64, 64);
 			cameraMoving = false;
 		}/*else if(){
 			this is stuff for right side
 		}*/else{
-			hitbox = new Rectangle((int)368, (int)(600-64-32), 64, 64);
+			//hitbox = new Rectangle((int)368, (int)(600-64-32), 64, 64);
 			cameraMoving = true;
 		}
 				
@@ -39,8 +41,6 @@ public class Player {
 			canJump = true;
 			curGrav = 0.3f;
 		}
-		
-		falling = true;
 	}
 	
 	public void render(Graphics g){

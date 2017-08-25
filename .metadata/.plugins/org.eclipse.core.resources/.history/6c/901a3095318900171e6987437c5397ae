@@ -39,8 +39,6 @@ public class Player {
 			canJump = true;
 			curGrav = 0.3f;
 		}
-		
-		falling = true;
 	}
 	
 	public void render(Graphics g){
