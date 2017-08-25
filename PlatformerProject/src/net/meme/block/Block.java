@@ -14,7 +14,7 @@ public abstract class Block {
 	public BufferedImage tex;
 	public Rectangle hitbox;
 	
-	private final int fallColXTol = 0;
+	private final int fallColXTol = 1;
 	
 	public Block(int x, int y, BufferedImage tex){
 		this.x = x*32;
@@ -30,7 +30,7 @@ public abstract class Block {
 		if(game.player.cameraMoving) hitbox = new Rectangle((int)(x-game.player.x+11.5*32), (int)(dy), (int)(32), (int)(32));
 		else hitbox = new Rectangle((int)(x-game.player.offset), (int)(dy), (int)(32*Display.scale), (int)(32*Display.scale));
 		
-		if((game.player.y+64 <= dy+Player.maxGrav*2 && game.player.y+64 >= dy-Player.maxGrav*2) && (game.player.x+64-x >= -fallColXTol && game.player.x-x <= fallColXTol) && hitbox.intersects(game.player.hitbox)){ // player is on top of block
+		if((game.player.y+64 <= dy+Player.maxGrav*2 && game.player.y+64 >= dy-Player.maxGrav*2) && (Math.abs(game.player.x+32-(x+16)) < 32) && hitbox.intersects(game.player.hitbox)){ // player is on top of block
 			// dont fall, player can jump now
 			game.player.falling = false;
 			game.player.canJump = true;
