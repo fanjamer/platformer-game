@@ -65,7 +65,7 @@ public class Player {
 	}
 	
 	private void gravity(){
-		if(curGrav < 15) curGrav*=1.1f;
+		if(curGrav < 15) curGrav*=1.08f;
 		y+=curGrav;
 		canJump = false;
 	}
