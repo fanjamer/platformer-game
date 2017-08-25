@@ -10,7 +10,9 @@ public class Art {
 	
 	public static final BufferedImage grass = load("/block/grass.png");
 	public static final BufferedImage dirt = load("/block/dirt.png");
-	public static final BufferedImage coarseDirt = load("/block/dirt.png");
+	public static final BufferedImage coarseDirt = load("/block/coarsedirt.png");
+	
+	public static final BufferedImage titleBG = load("/misc/titlebg.png");
 
 	public static BufferedImage load(String path){
 		InputStream stream = Art.class.getClass().getResourceAsStream(path);

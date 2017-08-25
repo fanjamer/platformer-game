@@ -1,8 +1,6 @@
 package net.meme.block;
 
-import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
@@ -15,6 +13,8 @@ public abstract class Block {
 	public float x, y;
 	public BufferedImage tex;
 	public Rectangle hitbox;
+	
+	private final int fallColXTol = 0;
 	
 	public Block(int x, int y, BufferedImage tex){
 		this.x = x*32;
@@ -30,7 +30,7 @@ public abstract class Block {
 		if(game.player.cameraMoving) hitbox = new Rectangle((int)(x-game.player.x+11.5*32), (int)(dy), (int)(32), (int)(32));
 		else hitbox = new Rectangle((int)(x-game.player.offset), (int)(dy), (int)(32*Display.scale), (int)(32*Display.scale));
 		
-		if((game.player.y+64 <= dy+Player.maxGrav*2 && game.player.y+64 >= dy-Player.maxGrav*2) && hitbox.intersects(game.player.hitbox)){ // player is on top of block
+		if((game.player.y+64 <= dy+Player.maxGrav*2 && game.player.y+64 >= dy-Player.maxGrav*2) && (game.player.x+64-x >= -fallColXTol && game.player.x-x <= fallColXTol) && hitbox.intersects(game.player.hitbox)){ // player is on top of block
 			// dont fall, player can jump now
 			game.player.falling = false;
 			game.player.canJump = true;

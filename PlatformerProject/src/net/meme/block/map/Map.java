@@ -5,8 +5,11 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import net.meme.Display;
 import net.meme.Game;
-import net.meme.block.*;
+import net.meme.block.Block;
+import net.meme.block.DirtBlock;
+import net.meme.block.GrassBlock;
 
 public class Map {
 	
@@ -50,6 +53,8 @@ public class Map {
 	}
 	
 	public void render(Game game, Graphics g){
+		if(background != null) g.drawImage(background, 0, 0, (int)(Display.width*Display.scale), (int)(Display.height*Display.scale), null);
+		
 		for(int x = 0; x < blocks.size(); x++){
 			ArrayList<Block> row = blocks.get(x);
 			for(int y = 0; y < row.size(); y++){
