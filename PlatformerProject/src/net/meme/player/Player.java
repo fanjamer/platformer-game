@@ -40,11 +40,11 @@ public class Player {
 		if(x < 0) x = 0;
 		else if(x+64 > 32*game.map.getWidth()) x = 32*game.map.getWidth()-64;
 		
+		float edge = (float) (32*game.map.getWidth());
 		if(x < 11.5*32){
 			hitbox = new Rectangle((int)x, (int)(Math.round(y)), 64, 64);
 			cameraMoving = false;
-		}else if(x > 32*game.map.getWidth()-13.5*32){
-			float edge = (float) (32*game.map.getWidth());
+		}else if(x > 32*game.map.getWidth()/2){
 			int dx = (int) (800-(edge-x));
 			hitbox = new Rectangle(dx, (int)Math.round(y), 64, 64);
 			cameraMoving = false;
