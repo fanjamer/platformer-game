@@ -11,8 +11,8 @@ import net.meme.Game;
 
 public class Player {
 	
-	public static final float jumpSpeed = 5f;
-	public static final float maxGrav = 8f;
+	public static final float jumpSpeed = 6f;
+	public static final float maxGrav = 9f;
 	public static final float startGrav = 1f;
 	public static final float spd = 2f;
 	
@@ -75,7 +75,7 @@ public class Player {
 			int dx = (int) (Display.width-(edge-x));
 			if(x < 11.5*32) g.fillRect((int)(x*Display.scale), (int)((y)*Display.scale), (int)(64*Display.scale), (int)(64*Display.scale)); 
 			else{ 
-				g.fillRect((int) (dx*Display.scale), (int)(Math.round(y)*Display.scale), (int)(64*Display.scale), (int)(64*Display.scale));
+				g.fillRect((int) (dx*Display.scale), (int)(y*Display.scale), (int)(64*Display.scale), (int)(64*Display.scale));
 			} 
 		}
 	}

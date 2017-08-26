@@ -14,7 +14,7 @@ public class Game {
 	public Map map;
 	
 	public Game(){
-		map = new Map(Art.load("/map/test.png"), Art.titleBG, this);
+		map = new Map(Art.load("/map/test.png"), null, this);
 	}
 	
 	public void tick(){

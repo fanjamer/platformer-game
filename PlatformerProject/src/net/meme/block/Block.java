@@ -13,9 +13,7 @@ public abstract class Block {
 	public float x, y;
 	public BufferedImage tex;
 	public Rectangle hitbox;
-	
-	private final int fallColXTol = 1;
-	
+		
 	public Block(int x, int y, BufferedImage tex){
 		this.x = x*32;
 		this.y = y*32;
@@ -37,11 +35,11 @@ public abstract class Block {
 			
 			// if player is in block correct his position
 			if(game.player.y+64>dy) game.player.y = dy-64;
-		}else if(game.player.x+64 <= x+Player.spd*2 && hitbox.intersects(game.player.hitbox)){ // player moves right and collides
+		}if(game.player.x+64 <= x+Player.spd*2 && (Math.abs(game.player.y+32-(dy+16)) < 64) && hitbox.intersects(game.player.hitbox)){ // player moves right and collides
 			game.player.x-=Player.spd;
-		}else if(game.player.x >= x-Player.spd*2 && hitbox.intersects(game.player.hitbox)){ // player moves left and collides
+		}if(game.player.x >= x-Player.spd*2 && (Math.abs(game.player.y+32-(dy+16)) < 64) && hitbox.intersects(game.player.hitbox)){ // player moves left and collides
 			game.player.x+=Player.spd;
-		}else if(game.player.y >= dy+Player.maxGrav*2 && hitbox.intersects(game.player.hitbox)){ // player hits bottom of block
+		}if(game.player.y >= dy+Player.maxGrav*2 && (Math.abs(game.player.x+32-(x+16)) < 32) && hitbox.intersects(game.player.hitbox)){ // player hits bottom of block
 			if(game.player.y < dy+32) game.player.y = dy+32;
 			game.player.jumping = false;
 			game.player.curGrav = Player.startGrav;
